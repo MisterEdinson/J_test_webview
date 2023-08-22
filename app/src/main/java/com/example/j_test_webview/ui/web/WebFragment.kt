@@ -5,15 +5,30 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebViewClient
+import android.widget.Toast
 import com.example.j_test_webview.R
+import com.example.j_test_webview.databinding.FragmentWebBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class WebFragment : Fragment() {
+    private lateinit var binding: FragmentWebBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_web, container, false)
+    ): View {
+        binding = FragmentWebBinding.inflate(LayoutInflater.from(context), container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val url = arguments?.getString("url")
+        binding.webPage.settings.javaScriptEnabled = true
+        binding.webPage.webViewClient = WebViewClient()
+        if(url != null){
+            binding.webPage.loadUrl(url)
+        }
     }
 }
