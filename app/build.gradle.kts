@@ -36,6 +36,9 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -53,10 +56,12 @@ dependencies {
     val navVersion = "2.5.3"
     implementation ("androidx.navigation:navigation-fragment-ktx:$navVersion")
     implementation ("androidx.navigation:navigation-ui-ktx:$navVersion")
-
+    //Hilt
     val hiltVersion = "2.44.2"
     implementation ("com.google.dagger:hilt-android:$hiltVersion")
     kapt ("com.google.dagger:hilt-compiler:$hiltVersion")
+    //Gson
+    implementation ("com.google.code.gson:gson:2.8.8")
 }
 kapt {
     correctErrorTypes = true
