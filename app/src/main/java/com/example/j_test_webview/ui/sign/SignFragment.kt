@@ -6,6 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.j_test_webview.R
+import dagger.hilt.android.AndroidEntryPoint
+
+@AndroidEntryPoint
 class SignFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
