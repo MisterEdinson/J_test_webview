@@ -82,4 +82,11 @@ class MainActivity : AppCompatActivity() {
         }
         dialog.show()
     }
+
+    fun closeApp() {
+        finish()
+        if (isTaskRoot) {
+            finishAffinity()
+        }
+    }
 }
