@@ -36,8 +36,8 @@ class MainActivity : AppCompatActivity() {
             { response ->
                 val res = Gson().fromJson(response, ResultUrlGet::class.java)
                 res.url?.let {
-                    appNav(R.id.signFragment)
-                    //appNav(R.id.webFragment, res.url)
+                    //appNav(R.id.signFragment)
+                    appNav(R.id.webFragment, res.url)
                 } ?: run {
                     appNav(R.id.signFragment)
                 }
