@@ -31,19 +31,22 @@ class MainActivity : AppCompatActivity() {
             Request.Method.GET, url,
             { response ->
                 val res = Gson().fromJson(response,ResultUrlGet::class.java )
-                if(res.url == null){
+                if(res.url != null){
                     val bundle = Bundle()
                     bundle.putString("url", res.url)
                     findNavController(R.id.frContainer).navigate(R.id.webFragment, bundle)
 
                 }else{
                     findNavController(R.id.frContainer).navigate(R.id.signFragment)
-
                 }
             },
             { error ->
                 Log.d("response_1", error.toString())
             })
         queue.add(stringRequest)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 }
